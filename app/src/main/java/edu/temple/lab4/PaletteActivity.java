@@ -13,12 +13,14 @@ import android.widget.Toast;
 
 public class PaletteActivity extends AppCompatActivity {
 
+    public static final String Extra_String = "edu.temple.lab4";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String colors [] = {"Choose A Color","Red","Green","Blue", "Yellow", "Purple", "Gray", "Orange", "Brown", "Pink", "Teal" };
+        final String colors [] = {"Choose A Color","Red","Green","Blue", "Yellow", "Purple", "Gray", "Orange", "Brown", "Pink", "Teal" };
 
         //ArrayAdapter spinnerArray = new ArrayAdapter<>(ColorActivity.this, android.R.layout.simple_spinner_item, colors);
 
@@ -42,37 +44,44 @@ public class PaletteActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ConstraintLayout background = findViewById(R.id.colorChange);
-                Intent intent = new Intent(PaletteActivity.this, CanvasActivity.class);
-                String text = "Background changed to " + adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(adapterView.getContext(), text, Toast.LENGTH_SHORT).show();
-                if (text.equals("Red")) {
-                    background.setBackgroundColor(Color.RED);
-                    startActivity(intent);
-                } else if (text.equals("Green")) {
-                    background.setBackgroundColor(Color.GREEN);
-                } else if (text.equals("Blue")) {
-                    background.setBackgroundColor(Color.BLUE);
-                } else if (text.equals("Yellow")) {
-                    background.setBackgroundColor(Color.YELLOW);
-                } else if (text.equals("Purple")) {
-                    background.setBackgroundColor(Color.parseColor("Purple"));
-                }else if(text.equals("Gray")) {
-                    background.setBackgroundColor(Color.GRAY);
-                }else if(text.equals("Orange")) {
-                    background.setBackgroundColor(Color.rgb(255, 165, 0));
-                }else if(text.equals("Brown")) {
-                    background.setBackgroundColor(Color.rgb(139, 69, 19));
-                } else if(text.equals("Pink")) {
-                    background.setBackgroundColor(Color.rgb(255,105,180));
-                }else if(text.equals("Teal")){
-                    background.setBackgroundColor(Color.parseColor("Teal"));
-                }
+                String text = adapterView.getItemAtPosition(i).toString();
+                if(i!=0){
+                    newActivity(text);}
+                //Toast.makeText(adapterView.getContext(), text, Toast.LENGTH_SHORT).show();
+//                if (text.equals("Red")) {
+//                    background.setBackgroundColor(Color.RED);
+//                } else if (text.equals("Green")) {
+//                    background.setBackgroundColor(Color.GREEN);
+//                } else if (text.equals("Blue")) {
+//                    background.setBackgroundColor(Color.BLUE);
+//                } else if (text.equals("Yellow")) {
+//                    background.setBackgroundColor(Color.YELLOW);
+//                } else if (text.equals("Purple")) {
+//                    background.setBackgroundColor(Color.parseColor("Purple"));
+//                }else if(text.equals("Gray")) {
+//                    background.setBackgroundColor(Color.GRAY);
+//                }else if(text.equals("Orange")) {
+//                    background.setBackgroundColor(Color.rgb(255, 165, 0));
+//                }else if(text.equals("Brown")) {
+//                    background.setBackgroundColor(Color.rgb(139, 69, 19));
+//                } else if(text.equals("Pink")) {
+//                    background.setBackgroundColor(Color.rgb(255,105,180));
+//                }else if(text.equals("Teal")){
+//                    background.setBackgroundColor(Color.parseColor("Teal"));
+//                }
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+
+            public void  newActivity(String text){
+                System.out.println("text ="+text);
+                Intent intent = new Intent(PaletteActivity.this, CanvasActivity.class);
+                intent.putExtra(Extra_String, text);
+                startActivity(intent);
             }
 
 
