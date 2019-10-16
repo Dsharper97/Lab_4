@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,9 @@ public class PaletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final String colors [] = {"Choose A Color","Red","Green","Blue", "Yellow", "Purple", "Gray", "Orange", "Brown", "Pink", "Teal" };
+        //final String colors [] = {"Choose A Color","Red","Green","Blue", "Yellow", "Purple", "Gray", "Orange", "Brown", "Pink", "Teal" };
+        Resources res = this.getResources();
+        final String[] colors = res.getStringArray(R.array.string_array_name);
 
         //ArrayAdapter spinnerArray = new ArrayAdapter<>(ColorActivity.this, android.R.layout.simple_spinner_item, colors);
 
@@ -31,9 +34,7 @@ public class PaletteActivity extends AppCompatActivity {
 // Specify the layout to use when the list of choices appears
         // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-
-        ColorAdapter CA = new ColorAdapter(PaletteActivity.this, colors);
-
+        ColorAdapter CA = new ColorAdapter(PaletteActivity.this, colors,res);
 
         // Apply the adapter to the spinner
 
@@ -44,9 +45,10 @@ public class PaletteActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ConstraintLayout background = findViewById(R.id.colorChange);
-                String text = adapterView.getItemAtPosition(i).toString();
+                String text = colors[i];
                 if(i!=0){
-                    newActivity(text);}
+                    newActivity(text);
+                }
                 //Toast.makeText(adapterView.getContext(), text, Toast.LENGTH_SHORT).show();
 //                if (text.equals("Red")) {
 //                    background.setBackgroundColor(Color.RED);
@@ -78,7 +80,7 @@ public class PaletteActivity extends AppCompatActivity {
             }
 
             public void  newActivity(String text){
-                System.out.println("text ="+text);
+                //System.out.println("text ="+text);
                 Intent intent = new Intent(PaletteActivity.this, CanvasActivity.class);
                 intent.putExtra(Extra_String, text);
                 startActivity(intent);

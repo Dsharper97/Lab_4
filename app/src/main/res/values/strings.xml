@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">Lab4</string>
+    <string name="app_name">Lab 4</string>
+    <string name="buttonId">Button</string>
+    <string name="Choose">Choose A Color</string>
+    <string name="Red">Red</string>
+    <string name="Green">Green</string>
+    <string name="Blue">Blue</string>
+    <string name="Yellow">Yellow</string>
+    <string name="Purple">Purple</string>
+    <string name="Gray">Gray</string>
+    <string name="Orange">Orange</string>
+    <string name="Brown">Brown</string>
+    <string name="Pink">Pink</string>
+    <string name="Teal">Teal</string>
+
+    <string-array name="string_array_name">
+        <item name="Choose">@string/Choose</item>
+        <item name="Red">@string/Red</item>
+        <item name="Green">@string/Green</item>
+        <item name="Blue">@string/Blue</item>
+        <item name="Yellow">@string/Yellow</item>
+        <item name="Purple">@string/Purple</item>
+        <item name="Gray">@string/Gray</item>
+        <item name="Orange">@string/Orange</item>
+        <item name="Brown">@string/Brown</item>
+        <item name="Pink">@string/Pink</item>
+        <item name="Teal">@string/Teal</item>
+    </string-array>
+
 </resources>
